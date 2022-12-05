@@ -22,7 +22,7 @@ var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=$
             output += `
             <h3 class="city-head">${weatherList.name}</h3>
             <div class="main-container">
-                <span>${weatherList.weather[0].icon}</span>
+            <img src="http://openweathermap.org/img/w/${weatherList.weather[0].icon}.png">
                 <div class="temp">
                     <span>${weatherList.main.temp}</span>
                     <span>${weatherList.weather[0].description}</span>
@@ -31,6 +31,30 @@ var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=$
             <div class="weather-details">
                 <h3>weather details</h3>
                 <ul class="weather-info">
+                    <li>
+                        <h4>feels like</h4>
+                        <span>${weatherList.main.feels_like}</span>
+                    </li>
+                    <li>
+                        <h4>humidity</h4>
+                        <span>${weatherList.main.humidity}</span>
+                    </li>
+                    <li>
+                    <h4>pressure</h4>
+                    <span>${weatherList.main.pressure}</span>
+                    </li>
+                    <li>
+                        <h4>wind speed</h4>
+                        <span>${weatherList.wind.speed}</span>
+                    </li>
+                    <li>
+                        <h4>wind deg</h4>
+                        <span>${weatherList.wind.deg}</span>
+                    </li>
+                    <li>
+                        <h4>visibility</h4>
+                        <span>${weatherList.visibility}</span>
+                    </li>
                 </ul>
             </div>
             </h3>
