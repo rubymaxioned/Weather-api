@@ -199,6 +199,12 @@ h4 {
   width: 50%;
   max-height: 70px;
 }
+
+main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
 /*=================================
   Header styling ends here
 =================================*/  
