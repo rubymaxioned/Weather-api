@@ -21,7 +21,7 @@ var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=$
         var temperature = parseFloat(kelvin - 273.15).toFixed(2);
         var feelsLike = weatherList.main.feels_like;
         var feelsLikeTemp = parseFloat(feelsLike - 273.15).toFixed(2);
-        console.log(feelsLikeTemp);
+        console.log(weatherList);
 
 
             output += `
