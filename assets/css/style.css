@@ -102,6 +102,11 @@ li {
 .bold { font-weight: bold; }
 .transition { transition: 1s all ease; }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 /*for wrapper*/
 .wrapper {
   max-width: 1350px;
@@ -111,7 +116,20 @@ li {
 /*=================================
   Header styling starts here
 =================================*/
+.card {
+  max-width: 50%;
+  padding: 20px 5%;
+  margin: 0 auto;
+  background-color: #000;
+  color: #fff;
+}
 
+h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  text-align: center;
+  text-transform: capitalize;
+}
 
 
 
