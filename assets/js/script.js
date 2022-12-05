@@ -16,15 +16,20 @@ var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=$
         return response.json();
     }).then(function(value){
         weatherList = value;
-        output = "";
-        console.log(weatherList);
+        var output = "";
+        var kelvin = weatherList.main.temp;
+        var temperature = parseFloat(kelvin - 273.15).toFixed(2);
+        var feelsLike = weatherList.main.feels_like;
+        var feelsLikeTemp = parseFloat(feelsLike - 273.15).toFixed(2);
+        console.log(feelsLikeTemp);
+
 
             output += `
             <h3 class="city-head">${weatherList.name}</h3>
             <div class="main-container">
             <img src="http://openweathermap.org/img/w/${weatherList.weather[0].icon}.png">
                 <div class="temp">
-                    <span>${weatherList.main.temp}</span>
+                    <span>${temperature}&#8451;</span>
                     <span>${weatherList.weather[0].description}</span>
                 </div>
             </div>
@@ -33,7 +38,7 @@ var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=$
                 <ul class="weather-info">
                     <li>
                         <h4>feels like</h4>
-                        <span>${weatherList.main.feels_like}</span>
+                        <span>${feelsLikeTemp}&#8451;</span>
                     </li>
                     <li>
                         <h4>humidity</h4>
