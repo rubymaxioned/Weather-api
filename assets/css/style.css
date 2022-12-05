@@ -210,10 +210,6 @@ main {
 
 .temp span:nth-of-type(2),
 .submit { text-transform: capitalize; }
-
-.blue { background-color: #9CC0E7; }
-.gray { background-color: #EEEEEE; }
-.white { background-color: #FCFCFC; }
 /*=================================
   Header styling ends here
 =================================*/  
