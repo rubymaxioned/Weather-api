@@ -102,6 +102,11 @@ li {
 .bold { font-weight: bold; }
 .transition { transition: 1s all ease; }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 /*for wrapper*/
 .wrapper {
   max-width: 1350px;
@@ -111,12 +116,36 @@ li {
 /*=================================
   Header styling starts here
 =================================*/
+.card {
+  padding: 20px 5%;
+  margin: 0 auto;
+  background-color: #000;
+  color: #fff;
+}
 
+h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  text-align: center;
+  text-transform: capitalize;
+}
 
+.city-container input { 
+  width: 100%;
+  outline: none;
+}
 
+form { 
+  display: flex;
+  justify-content: center;
+}
 
-
-
+.submit-container button {
+  padding: 2px 15%;
+  border: none;
+  background-color: #FF1F44;
+  color: #fff;
+}
 /*=================================
   Header styling ends here
 =================================*/  
