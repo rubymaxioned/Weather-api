@@ -1,30 +1,29 @@
-var weatherList = document.querySelector('.weather');
-var input = document.querySelector('.city-container input');
-var button = document.querySelector('.submit-container button');
-var key = "a2dbafd32bfb6d87a7dee017beec62d6";
-var city = '';
+var weatherList = document.querySelector('.weather'),
+    input = document.querySelector('.city-container input'),
+    button = document.querySelector('.submit-container button'),
+    card = document.querySelector('.card'),
+    key = "a2dbafd32bfb6d87a7dee017beec62d6",
+    city = '';
 
-button.addEventListener('click',function(){
+button.addEventListener('click', function () {
     city = "";
     city += input.value;
     myFunction();
 })
 
-function myFunction(){
-var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`);
-    p.then(function(response) {
+function myFunction() {
+    var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`);
+    p.then(function (response) {
         return response.json();
-    }).then(function(value){
+    }).then(function (value) {
         weatherList = value;
-        var output = "";
-        var kelvin = weatherList.main.temp;
-        var temperature = parseFloat(kelvin - 273.15).toFixed(2);
-        var feelsLike = weatherList.main.feels_like;
-        var feelsLikeTemp = parseFloat(feelsLike - 273.15).toFixed(2);
-        console.log(weatherList);
+        var output = "",
+            kelvin = weatherList.main.temp,
+            temperature = parseFloat(kelvin - 273.15).toFixed(2),
+            feelsLike = weatherList.main.feels_like,
+            feelsLikeTemp = parseFloat(feelsLike - 273.15).toFixed(2);
 
-
-            output += `
+        output += `
             <h3 class="city-head">${weatherList.name}</h3>
             <div class="main-container">
             <img src="http://openweathermap.org/img/w/${weatherList.weather[0].icon}.png">
@@ -63,7 +62,17 @@ var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=$
                 </ul>
             </div>
             </h3>
-            `;  
-    document.querySelector('.weather').innerHTML = output;
+            `;
+
+        document.querySelector('.weather').innerHTML = output;
+        if (temperature < 10) {
+            card.style.backgroundColor = "Pink";
+        }
+        else if (temperature > 10 && temperature <=30) {
+            card.style.backgroundColor = "LightSalmon";
+
+        } else {
+            card.style.backgroundColor = "red";
+        } 
     })
 }
