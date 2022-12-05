@@ -205,6 +205,11 @@ main {
   display: flex;
   align-items: center;
 }
+
+.temp span:nth-of-type(1) { margin-bottom: 5px; }
+
+.temp span:nth-of-type(2),
+.submit { text-transform: capitalize; }
 /*=================================
   Header styling ends here
 =================================*/  
