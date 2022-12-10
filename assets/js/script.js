@@ -68,11 +68,11 @@ function myFunction() {
         if (temperature < 10) {
             card.style.backgroundColor = "Pink";
         }
-        else if (temperature > 10 && temperature <=30) {
+        else if (temperature > 10 && temperature <= 30) {
             card.style.backgroundColor = "LightSalmon";
 
         } else {
             card.style.backgroundColor = "red";
-        } 
+        }
     })
 }
