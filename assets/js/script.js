@@ -1,18 +1,21 @@
 var weatherList = document.querySelector('.weather'),
     input = document.querySelector('.city-container input'),
     button = document.querySelector('.submit-container button'),
+    list = document.querySelector(".weather li"),
     card = document.querySelector('.card'),
     key = "a2dbafd32bfb6d87a7dee017beec62d6",
     city = '';
 
+list.remove();
+
 button.addEventListener('click', function () {
     city = "";
     city += input.value;
-    myFunction();
+    weatherInfo();
 })
 
-function myFunction() {
-    var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`);
+function weatherInfo() {
+    var p = fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key);
     p.then(function (response) {
         return response.json();
     }).then(function (value) {
@@ -82,6 +85,11 @@ function myFunction() {
             info.classList.add('hide');
             error.classList.remove('hide');
         }
+        else if (temperature > 10 && temperature <= 30) {
+            card.style.backgroundColor = "LightSalmon";
 
+        } else {
+            card.style.backgroundColor = "red";
+        }
     })
 }
