@@ -16,6 +16,9 @@ function myFunction() {
     p.then(function (response) {
         return response.json();
     }).then(function (value) {
+
+        if (value.cod == 200) {
+
         weatherList = value;
         var output = "",
             kelvin = weatherList.main.temp,
@@ -74,5 +77,12 @@ function myFunction() {
         } else {
             card.style.backgroundColor = "red";
         }
+    }
+
+    if (value.cod == 404 || value.cod == 400) {
+        info.classList.add('hide');
+        error.classList.remove('hide');
+    }
+    
     })
 }
