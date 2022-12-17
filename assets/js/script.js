@@ -1,34 +1,29 @@
 var weatherList = document.querySelector('.weather'),
     input = document.querySelector('.city-container input'),
     button = document.querySelector('.submit-container button'),
-    list = document.querySelector(".weather li"),
     card = document.querySelector('.card'),
     key = "a2dbafd32bfb6d87a7dee017beec62d6",
     city = '';
 
-list.remove();
-
 button.addEventListener('click', function () {
     city = "";
     city += input.value;
-    weatherInfo();
+    myFunction();
 })
 
-function weatherInfo() {
-    var p = fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key);
+function myFunction() {
+    var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`);
     p.then(function (response) {
         return response.json();
     }).then(function (value) {
+        weatherList = value;
+        var output = "",
+            kelvin = weatherList.main.temp,
+            temperature = parseFloat(kelvin - 273.15).toFixed(2),
+            feelsLike = weatherList.main.feels_like,
+            feelsLikeTemp = parseFloat(feelsLike - 273.15).toFixed(2);
 
-        if (value.cod == 200) {
-            weatherList = value;
-            var output = "",
-                kelvin = weatherList.main.temp,
-                temperature = parseFloat(kelvin - 273.15).toFixed(2),
-                feelsLike = weatherList.main.feels_like,
-                feelsLikeTemp = parseFloat(feelsLike - 273.15).toFixed(2);
-
-            output += `
+        output += `
             <h3 class="city-head">${weatherList.name}</h3>
             <div class="main-container">
             <img src="http://openweathermap.org/img/w/${weatherList.weather[0].icon}.png">
@@ -69,21 +64,9 @@ function weatherInfo() {
             </h3>
             `;
 
-            document.querySelector('.weather').innerHTML = output;
-            if (temperature < 10) {
-                card.style.backgroundColor = "Pink";
-            }
-            else if (temperature > 10 && temperature <= 30) {
-                card.style.backgroundColor = "LightSalmon";
-
-            } else {
-                card.style.backgroundColor = "red";
-            }
-        }
-
-        if (value.cod == 404 || value.cod == 400) {
-            info.classList.add('hide');
-            error.classList.remove('hide');
+        document.querySelector('.weather').innerHTML = output;
+        if (temperature < 10) {
+            card.style.backgroundColor = "Pink";
         }
         else if (temperature > 10 && temperature <= 30) {
             card.style.backgroundColor = "LightSalmon";
