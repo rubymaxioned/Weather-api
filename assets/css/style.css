@@ -124,10 +124,11 @@ li {
 }
 
 h2 {
-  margin-bottom: 15px;
+  margin: 25px 0 15px;
   font-size: 20px;
   text-align: center;
   text-transform: capitalize;
+  color: #FF1F44;
 }
 
 .city-container input { 
