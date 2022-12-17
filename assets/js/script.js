@@ -16,14 +16,16 @@ function myFunction() {
     p.then(function (response) {
         return response.json();
     }).then(function (value) {
-        weatherList = value;
-        var output = "",
-            kelvin = weatherList.main.temp,
-            temperature = parseFloat(kelvin - 273.15).toFixed(2),
-            feelsLike = weatherList.main.feels_like,
-            feelsLikeTemp = parseFloat(feelsLike - 273.15).toFixed(2);
 
-        output += `
+        if (value.cod == 200) {
+            weatherList = value;
+            var output = "",
+                kelvin = weatherList.main.temp,
+                temperature = parseFloat(kelvin - 273.15).toFixed(2),
+                feelsLike = weatherList.main.feels_like,
+                feelsLikeTemp = parseFloat(feelsLike - 273.15).toFixed(2);
+
+            output += `
             <h3 class="city-head">${weatherList.name}</h3>
             <div class="main-container">
             <img src="http://openweathermap.org/img/w/${weatherList.weather[0].icon}.png">
@@ -64,15 +66,22 @@ function myFunction() {
             </h3>
             `;
 
-        document.querySelector('.weather').innerHTML = output;
-        if (temperature < 10) {
-            card.style.backgroundColor = "Pink";
-        }
-        else if (temperature > 10 && temperature <= 30) {
-            card.style.backgroundColor = "LightSalmon";
+            document.querySelector('.weather').innerHTML = output;
+            if (temperature < 10) {
+                card.style.backgroundColor = "Pink";
+            }
+            else if (temperature > 10 && temperature <= 30) {
+                card.style.backgroundColor = "LightSalmon";
 
-        } else {
-            card.style.backgroundColor = "red";
+            } else {
+                card.style.backgroundColor = "red";
+            }
         }
+
+        if (value.cod == 404 || value.cod == 400) {
+            info.classList.add('hide');
+            error.classList.remove('hide');
+        }
+
     })
 }
