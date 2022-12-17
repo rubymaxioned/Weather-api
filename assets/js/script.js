@@ -12,7 +12,7 @@ button.addEventListener('click', function () {
 })
 
 function myFunction() {
-    var p = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`);
+    var p = fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key);
     p.then(function (response) {
         return response.json();
     }).then(function (value) {
