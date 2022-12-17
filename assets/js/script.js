@@ -1,9 +1,11 @@
-var weatherList = document.querySelector('.weather'),
-    input = document.querySelector('.city-container input'),
+var input = document.querySelector('.city-container input'),
     button = document.querySelector('.submit-container button'),
     card = document.querySelector('.card'),
+    list = document.querySelector(".weather li"),
     key = "a2dbafd32bfb6d87a7dee017beec62d6",
     city = '';
+
+list.remove();
 
 button.addEventListener('click', function () {
     city = "";
@@ -16,8 +18,16 @@ function myFunction() {
     p.then(function (response) {
         return response.json();
     }).then(function (value) {
+        weatherList = document.querySelector('.weather'),
+            error = document.querySelector('.error-message');
 
         if (value.cod == 200) {
+
+            if (weatherList.classList.contains('hide')) {
+                weatherList.classList.remove('hide');
+            }
+
+            error.classList.add('hide');
 
             weatherList = value;
             var output = "",
@@ -75,12 +85,15 @@ function myFunction() {
                 card.style.backgroundColor = "LightSalmon";
 
             } else {
-                card.style.backgroundColor = "red";
+                card.style.backgroundColor = "Apricot";
             }
         }
 
         if (value.cod == 404 || value.cod == 400) {
-            info.classList.add('hide');
+            var error = document.querySelector('.error-message'),
+                weatherList = document.querySelector('.weather');
+            console.log(error);
+            weatherList.classList.add('hide');
             error.classList.remove('hide');
         }
 
