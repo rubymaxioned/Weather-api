@@ -79,13 +79,13 @@ function myFunction() {
 
             document.querySelector('.weather').innerHTML = output;
             if (temperature < 10) {
-                card.style.backgroundColor = "Pink";
+                card.style.backgroundColor = "#89CFF0";
             }
             else if (temperature > 10 && temperature <= 30) {
-                card.style.backgroundColor = "LightSalmon";
+                card.style.backgroundColor = "#F7DBD7";
 
             } else {
-                card.style.backgroundColor = "Apricot";
+                card.style.backgroundColor = "#FAD5A5";
             }
         }
 
