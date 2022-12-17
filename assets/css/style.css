@@ -210,6 +210,7 @@ main {
 
 .temp span:nth-of-type(2),
 .submit { text-transform: capitalize; }
+.hide { display: none; }
 /*=================================
   Header styling ends here
 =================================*/  
